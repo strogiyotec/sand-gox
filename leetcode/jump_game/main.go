@@ -14,26 +14,26 @@ func main() {
 }
 
 func canJump(nums []int) bool {
-	if len(nums) == 0 {
+	if len(nums) == 1 {
 		return true
 	}
+	index := -1
 	tuple := pair{
 		first:  0,
 		second: 0,
 	}
 	for true {
-		canJump := -1
 		for i := tuple.first; i <= tuple.second; i++ {
-			if canJump < nums[i]+i {
-				canJump = nums[i] + i
+			if i+nums[i] > index {
+				index = i + nums[i]
 			}
 		}
-		if canJump >= len(nums)-1 {
+		if index >= len(nums)-1 {
 			return true
 		}
 		tuple = pair{
-			first:  tuple.second + 1,
-			second: canJump,
+			first:  tuple.second,
+			second: index,
 		}
 		if tuple.first > tuple.second {
 			return false
