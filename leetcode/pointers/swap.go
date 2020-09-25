@@ -13,6 +13,8 @@ func main() {
 }
 
 func swap(first *int, second *int) {
+	fmt.Println(first)
+	fmt.Println(*first)
 	temp := *first
 	*first = *second
 	*second = temp
